@@ -521,7 +521,7 @@ class LightTemplate(TemplateEntity, LightEntity):
                     "Received invalid brightness : %s. Expected: 0-255", brightness
                 )
                 self._brightness = None
-        except ValueError:
+        except (TypeError, ValueError):
             _LOGGER.error(
                 "Template must supply an integer brightness from 0-255, or 'None'",
                 exc_info=True,
@@ -542,7 +542,7 @@ class LightTemplate(TemplateEntity, LightEntity):
                     "Received invalid white value: %s. Expected: 0-255", white_value
                 )
                 self._white_value = None
-        except ValueError:
+        except (TypeError, ValueError):
             _LOGGER.error(
                 "Template must supply an integer white_value from 0-255, or 'None'",
                 exc_info=True,
@@ -632,7 +632,7 @@ class LightTemplate(TemplateEntity, LightEntity):
                     self.max_mireds,
                 )
                 self._temperature = None
-        except ValueError:
+        except (TypeError, ValueError):
             _LOGGER.error(
                 "Template must supply an integer temperature within the range for this light, or 'None'",
                 exc_info=True,
@@ -680,7 +680,7 @@ class LightTemplate(TemplateEntity, LightEntity):
                 self._max_mireds = None
                 return
             self._max_mireds = int(render)
-        except ValueError:
+        except (TypeError, ValueError):
             _LOGGER.error(
                 "Template must supply an integer temperature within the range for this light, or 'None'",
                 exc_info=True,
@@ -695,7 +695,7 @@ class LightTemplate(TemplateEntity, LightEntity):
                 self._min_mireds = None
                 return
             self._min_mireds = int(render)
-        except ValueError:
+        except (TypeError, ValueError):
             _LOGGER.error(
                 "Template must supply an integer temperature within the range for this light, or 'None'",
                 exc_info=True,
